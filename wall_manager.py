@@ -7,7 +7,7 @@ class WallManager:
         self.screen_width = screen_width
         self.screen_height = screen_height
 
-    def generate_random_list(self, total, num_elements, max_diff, max_value_limit, min_value=50):
+    def generate_random_list(self, total, num_elements, max_diff, max_value_limit, min_value=100):
         while True:
             try:
                 if total < num_elements:
