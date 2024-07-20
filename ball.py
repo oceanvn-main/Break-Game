@@ -9,8 +9,8 @@ class Ball(Turtle):
         self.color("white")
         self.shape("circle")
         self.penup()
-        self.x_move = 3
-        self.y_move = -3
+        self.x_move = 2
+        self.y_move = -2
         self.move_speed = 2
 
     def move(self):
@@ -26,7 +26,7 @@ class Ball(Turtle):
         random_potition = [-100, -200, -300, -50, -70, 60, 150, 200, 300]
         directions = [1, -1]
         self.x_move = 2 * random.choice(directions)
-        self.y_move = 2 * random.choice(directions)
+        self.y_move = 2 * random.choice([1])
         self.goto(x=random.choice(random_potition), y=-30)
         self.move_speed = 1
         self.bounce_y()
