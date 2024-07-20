@@ -1,7 +1,6 @@
-from turtle import Screen, Turtle
-import random
+from turtle import Screen
 import time
-import turtle
+import tkinter as tk
 from paddle import Paddle
 from ball import Ball
 from Score_board import Scoreboard
@@ -13,6 +12,7 @@ screen.bgcolor('black')
 screen.title("Welcome to Break Game")
 screen.tracer(0)
 
+#Create game objects
 score = Scoreboard()
 wall_manager = WallManager(screen_width=1600, screen_height=1000)
 all_walls = wall_manager.create_all_walls()
@@ -20,6 +20,7 @@ ball = Ball()
 position = (-200, -430)
 paddle = Paddle(position)
 
+tk_screen = screen._root
 
 def check_collision_with_paddle(ball, paddle):
     ball_radius = 10
@@ -61,13 +62,24 @@ def check_collision_with_wall(ball, wall):
     return False
 
 
+def follow_mouse(event):
+    x = event.x - screen.window_width() // 2
+    paddle.move_paddle(x, paddle.ycor())
+
+
+tk_screen.bind("<Motion>", follow_mouse)
+tk_screen.config(cursor='none')
+screen.listen()
+screen.onkey(paddle.move_right, "d")
+screen.onkey(paddle.move_left, "a")
+screen.onkey(paddle.move_right, "Right")
+screen.onkey(paddle.move_left, "Left")
+
+
 is_game_on = True
 while is_game_on:
     screen.update()
     ball.move()
-    screen.listen()
-    screen.onkey(paddle.move_right, "d")
-    screen.onkey(paddle.move_left, "a")
     time.sleep(0.01)
 
     # Detect ball over the wall

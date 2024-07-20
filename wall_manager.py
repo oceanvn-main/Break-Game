@@ -39,7 +39,11 @@ class WallManager:
                 if any(value > max_value_limit for value in values):
                     raise ValueError("Generated values exceed the maximum limit.")
 
+                if remaining < min_value:
+                    raise ValueError("Remaining value is less than the minimum value.")
+
                 random.shuffle(values)
+                print(f"List values: {values}")
                 return values
 
             except ValueError as e:

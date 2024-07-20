@@ -19,8 +19,8 @@ class Ball(Turtle):
         self.goto(new_x, new_y)
 
     def bounce_y(self):
-        self.y_move *= -1.1
-        self.move_speed *= 1.1
+        self.y_move *= -1.01
+        self.move_speed *= 1.01
 
     def reset_position(self):
         random_potition = [-100, -200, -300, -50, -70, 60, 150, 200, 300]
